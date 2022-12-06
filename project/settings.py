@@ -35,10 +35,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 # Application definition
 
 INSTALLED_APPS = [
-    'bootstrap4',
-    'cloudinary',
     'tinymce',
-    'django_daraja',
     'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
