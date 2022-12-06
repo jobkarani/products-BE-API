@@ -38,3 +38,9 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
+class BuyMpesa(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, null=True)
+
+    def __unicode__(self):
+        return self.product
