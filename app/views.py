@@ -1,8 +1,13 @@
+from rest_framework import status
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
+
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
 from django.db.models import Q
 
 from app.models import *
+from serializer import *
 
 # Create your views here.
 
@@ -54,3 +59,15 @@ def search(request):
         'product_count':product_count,
     }
     return products
+
+
+@api_view(['GET',])
+def api_product_detail_view(request, category_slug, product_slug):
+    try:
+        single_product = Product.objects.get(category__slug=category_slug,slug=product_slug)
+    except Product.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == "GET":
+        serializer = ProductSerializer(single_product)
+        return Response(serializer.data)
