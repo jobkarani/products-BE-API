@@ -3,15 +3,15 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 
 from django.http import HttpResponse
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, render
 from django.db.models import Q
 
 from app.models import *
-from serializer import *
+from .serializer import *
 
 # Create your views here.
 
-def productsPage(request, category_slug=None,product_slug=None):
+def productsPage(request, category_slug=None):
     categories = None
     products = None
     if category_slug != None:
@@ -24,7 +24,7 @@ def productsPage(request, category_slug=None,product_slug=None):
     context = {
         'product_count':product_count,
     }
-    return products
+    return render(request, 'products.html', context)
 
 def product_detail(request, category_slug, product_slug):
 
@@ -40,7 +40,7 @@ def product_detail(request, category_slug, product_slug):
     'products':products,
     }
 
-    return single_product
+    return render(request, 'productDetail.html', context)
 
 def search(request):
     products = 0
@@ -58,7 +58,7 @@ def search(request):
         'products':products,
         'product_count':product_count,
     }
-    return products
+    return render(request,'products.html', ctx)
 
 
 @api_view(['GET',])
