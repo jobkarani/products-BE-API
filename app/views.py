@@ -1,4 +1,6 @@
-from django.shortcuts import get_object_or_404, render
+from django.http import HttpResponse
+from django.shortcuts import get_object_or_404
+from django.db.models import Q
 
 from app.models import *
 
@@ -34,3 +36,21 @@ def product_detail(request, category_slug, product_slug):
     }
 
     return single_product
+
+def search(request):
+    products = 0
+    product_count = 0
+    if 'keyword' in request.GET:
+        keyword=request.GET['keyword']
+        if keyword:
+            products= Product.objects.order_by('-name').filter(Q(description__icontains=keyword) | Q(name__icontains=keyword))
+            product_count = products.count()
+        elif keyword != keyword :
+
+            return HttpResponse('Ooops no products found with that keyword :(  Try another Keyword :)')
+
+    ctx={
+        'products':products,
+        'product_count':product_count,
+    }
+    return products
