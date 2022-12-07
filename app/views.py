@@ -40,7 +40,7 @@ def product_detail(request, category_slug, product_slug):
     'products':products,
     }
 
-    return render(request, 'productDetail.html', context)
+    return render(request, 'productDetails.html', context)
 
 def search(request):
     products = 0
