@@ -60,14 +60,17 @@ def search(request):
     }
     return render(request,'products.html', ctx)
 
+@api_view(['GET',])
+def api_products(request):
+    if request.method == "GET":
+        products = Product.objects.all()
+        serializer = ProductSerializer(products, many=True)
+        return Response(serializer.data)
 
 @api_view(['GET',])
-def api_product_detail_view(request, category_slug, product_slug):
-    try:
-        single_product = Product.objects.get(category__slug=category_slug,slug=product_slug)
-    except Product.DoesNotExist:
-        return Response(status=status.HTTP_404_NOT_FOUND)
-
+def api_categories(request):
     if request.method == "GET":
-        serializer = ProductSerializer(single_product)
+        categories = Category.objects.all()
+        serializer = CategorySerializer(categories, many=True)
         return Response(serializer.data)
+
