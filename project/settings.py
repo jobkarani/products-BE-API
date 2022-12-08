@@ -99,7 +99,9 @@ db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
 
 
-ALLOWED_HOSTS=['*']
+ALLOWED_HOSTS=['*', 'https://ahericaredb.up.railway.app/']
+
+CSRF_TRUSTED_ORIGINS = ['https://ahericaredb.up.railway.app/']
 
 UPLOADCARE = {  
     'pub_key': config('pub_key'),
