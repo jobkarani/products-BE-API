@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
 from pyuploadcare.dj.models import ImageField
+from cloudinary.models import CloudinaryField
 
 # Create your models here.
 
@@ -21,9 +22,9 @@ class Category(models.Model):
 class Product(models.Model):
     name = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
-    image = ImageField(manual_crop="800x800")
-    image2 = ImageField(blank=True, manual_crop="800x800")
-    image3 = ImageField(blank=True, manual_crop="800x800")
+    image = CloudinaryField('image')
+    image2 = CloudinaryField('image', blank=True, null=True)
+    image3 = CloudinaryField('image', blank=True, null=True)
     description = models.TextField(max_length=4000)
     new_price = models.FloatField()
     old_price = models.FloatField()
