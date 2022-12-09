@@ -22,6 +22,8 @@ def productsPage(request, category_slug=None):
         products = Product.objects.all().filter(is_available=True)
         product_count = products.count()
     context = {
+        'categories':categories,
+        'products':products,
         'product_count':product_count,
     }
     return render(request, 'products.html', context)
