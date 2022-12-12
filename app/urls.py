@@ -7,5 +7,5 @@ urlpatterns = [
     path('products/search/', views.search, name='search'),
     path('api_products/', views.api_products, name='apiProducts' ),
     path('api_categories/', views.api_categories, name='apiCategories' ),
-    # path('api_productid/', views.getProductsById, name='apiProductById' ),
+    path('api_productid/', views.getProductsById, name='apiProductById' ),
 ]
