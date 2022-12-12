@@ -12,9 +12,6 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 import csv
 import os
-import cloudinary
-import cloudinary.uploader
-import cloudinary.api
 from pathlib import Path
 from decouple import config,Csv
 import dj_database_url
@@ -114,12 +111,6 @@ UPLOADCARE = {
     'pub_key': config('pub_key'),
     'secret': config('secret'),
 }
-
-cloudinary.config( 
-  cloud_name = "dyeo1z9na", 
-  api_key = "591985359787953", 
-  api_secret = "_Uc4vyJJNOCgWpJpkjSvhv6-OYg" 
-)
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators

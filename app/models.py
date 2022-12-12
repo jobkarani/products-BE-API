@@ -1,8 +1,6 @@
 from django.db import models
 from django.urls import reverse
 from pyuploadcare.dj.models import ImageField
-from cloudinary.models import CloudinaryField
-
 # Create your models here.
 
 class Category(models.Model):
