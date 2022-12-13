@@ -81,5 +81,5 @@ def api_categories(request):
 def getProductDetails(request, product_id):
     if request.method == "GET":
         product= Product.objects.filter(id = product_id)
-        serializer = ProductSerializer(product, many=False)
+        serializer = ProductSerializer(product, many=True)
         return Response(serializer.data)
