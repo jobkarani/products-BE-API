@@ -35,6 +35,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 # Application definition
 
 INSTALLED_APPS = [
+    'corsheaders',
     'tinymce',
     'crispy_forms',
     'django.contrib.admin',
@@ -45,7 +46,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'app.apps.AppConfig', 
     "rest_framework", 
-    'corsheaders',
     'cloudinary',  
 ]
 
