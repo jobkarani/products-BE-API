@@ -89,5 +89,5 @@ def getProductDetails(request, product_id):
 def getProductsByCategory(request, category_id):
     if request.method == "GET":
         catproducts= Product.objects.filter( id= category_id )
-        serializer = CategorySerializer(catproducts, many=True)
+        serializer = ProductSerializer(catproducts, many=True)
         return Response(serializer.data)
