@@ -88,6 +88,6 @@ def getProductDetails(request, product_id):
 @api_view(['GET'])
 def getProductsByCategory(request, category_id):
     if request.method == "GET":
-        catproducts= Product.objects.filter( id= category_id )
+        catproducts= Product.objects.filter( category_id= category_id )
         serializer = ProductSerializer(catproducts, many=True)
         return Response(serializer.data)
