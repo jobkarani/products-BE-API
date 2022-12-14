@@ -87,7 +87,7 @@ def getProductDetails(request, product_id):
 
 @api_view(['GET'])
 def getProductsByCategory(request, category_slug):
-    if request.method == "GET" and if category_slug != None:
+    if request.method == "GET" and category_slug != None:
         product= Product.objects.filter(slug = category_slug)
         serializer = ProductSerializer(product, many=True)
         return Response(serializer.data)
