@@ -83,3 +83,11 @@ def getProductDetails(request, product_id):
         product= Product.objects.filter(id = product_id)
         serializer = ProductSerializer(product, many=True)
         return Response(serializer.data)
+
+
+@api_view(['GET'])
+def getProductsByCategory(request, category_slug):
+    if request.method == "GET" && category_slug != None:
+        product= Product.objects.filter(slug = category_slug)
+        serializer = ProductSerializer(product, many=True)
+        return Response(serializer.data)
