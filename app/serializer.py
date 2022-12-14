@@ -3,17 +3,9 @@ from .models import *
 
 
 class CategorySerializer(serializers.ModelSerializer):
-    product_name = serializers.CharField(source='product.name')
-    product_id = serializers.IntegerField(source='product.id')
-    product_slug = serializers.CharField(source='product.slug')
-    product_image = serializers.ImageField(source='product.image')
-    product_image2 = serializers.ImageField(source='product.image2')
-    product_description = serializers.CharField(source='product.description')
-    product_new_price = serializers.CharField(source='product.new_price')
-    product_old_price = serializers.CharField(source='product.old_price')
     class Meta:
         model = Category
-        fields = ['id', 'name', 'slug','product_name','product_id','product_slug','product_image','product_image2','product_description','product_new_price','product_old_price']
+        fields = ['id', 'name', 'slug']
 
 class ProductSerializer(serializers.ModelSerializer):
     category_name = serializers.CharField(source='category.name')
