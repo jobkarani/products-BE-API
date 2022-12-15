@@ -9,5 +9,4 @@ urlpatterns = [
     path('api_categories/', views.api_categories, name='apiCategories' ),
     path('getProductDetails/<int:product_id>/', views.getProductDetails, name='getProductDetails' ),
     path('api_categoryproducts/<int:category_id>/', views.getProductsByCategory, name='apiCategoryproducts' ),
-    path('categoryproduct_search/',views.productListByCategory.as_view()),
 ]

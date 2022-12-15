@@ -15,6 +15,7 @@ import os
 from pathlib import Path
 from decouple import config,Csv
 import dj_database_url
+from rest_framework.pagination import LimitOffsetPagination
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -189,3 +190,8 @@ CORS_ALLOW_HEADERS = [
     "x-csrftoken",
     "x-requested-with",
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 12
+}

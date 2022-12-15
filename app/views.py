@@ -9,6 +9,7 @@ from django.db.models import Q
 from app.models import *
 from .serializer import *
 from rest_framework import generics
+from rest_framework.pagination import LimitOffsetPagination
 
 # Create your views here.
 
@@ -92,12 +93,3 @@ def getProductsByCategory(request, category_id):
         catproducts= Product.objects.filter( id= category_id )
         serializer = ProductSerializer(catproducts, many=True)
         return Response(serializer.data)
-
-class productListByCategory(generics.ListAPIView):
-    serializer_class = ProductSerializer
-    def get_queryset(self):
-        queryset = Product.objects.all()
-        search = self.request.query_params.get('search', None)
-        if search is not None:
-            queryset = queryset.filter(category__name__icontains=search)
-        return queryset
