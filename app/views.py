@@ -96,7 +96,7 @@ def getProductsByCategory(request, category_id):
 class productListByCategory(generics.ListAPIView):
     serializer_class = ProductSerializer
     def get_queryset(self):
-        queryset = Product.objects.all()
+        queryset = Product.objects.filter(category__name = 'category_name')
         search = self.request.query_params.get('search', None)
         if search is not None:
             queryset = queryset.filter(category__name__icontains=search)
