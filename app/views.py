@@ -8,6 +8,7 @@ from django.db.models import Q
 
 from app.models import *
 from .serializer import *
+from .pagination import *
 from rest_framework import generics
 from rest_framework.pagination import LimitOffsetPagination
 
@@ -69,7 +70,7 @@ def api_products(request):
     if request.method == "GET":
         products = Product.objects.all()
         serializer = ProductSerializer(products, many=True)
-        pagination_class = LimitOffsetPagination
+        pagination_class = CustomPageNumberPagination
         return Response(serializer.data)
 
 @api_view(['GET',])
