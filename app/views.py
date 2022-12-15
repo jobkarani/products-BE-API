@@ -8,6 +8,7 @@ from django.db.models import Q
 
 from app.models import *
 from .serializer import *
+from rest_framework import generics
 
 # Create your views here.
 
@@ -88,6 +89,15 @@ def getProductDetails(request, product_id):
 @api_view(['GET'])
 def getProductsByCategory(request, category_id):
     if request.method == "GET":
-        catproducts= Category.objects.filter( id= category_id )
-        serializer = CategorySerializer(catproducts, many=True)
+        catproducts= Product.objects.filter( id= category_id )
+        serializer = ProductSerializer(catproducts, many=True)
         return Response(serializer.data)
+
+class productListByCategory(generics.ListAPIView):
+    serializer_class = ProductSerializer
+    def get_queryset(self):
+        queryset = Product.objects.all()
+        search = self.request.query_params.get('search', None)
+        if search is not None:
+            queryset = queryset.filter(category__name__icontains=search)
+        return queryset
