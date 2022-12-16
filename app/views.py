@@ -70,6 +70,7 @@ def api_products(request):
     if request.method == "GET":
         products = Product.objects.all()
         serializer = ProductSerializer(products, many=True)
+        pagination_class = LimitOffsetPagination
         return Response(serializer.data)
 
 @api_view(['GET',])
