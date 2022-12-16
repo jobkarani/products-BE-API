@@ -77,7 +77,7 @@ def api_products(request):
 
         # Set up pagination
         paginator = PageNumberPagination()
-        paginator.page_size = 12
+        paginator.page_size = 300
         result_page = paginator.paginate_queryset(products, request)
 
         # Serialize the result page
