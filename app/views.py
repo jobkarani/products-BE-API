@@ -70,28 +70,19 @@ class StandardResultsSetPagination(PageNumberPagination):
     page_size_query_param = 'page_size'
     max_page_size = 1000
 
-class api_products(generics.ListAPIView):
-    pagination_class = StandardResultsSetPagination
+@api_view(['GET',])
+def api_products(request):
+    if request.method == "GET":
+        products = Product.objects.all()
 
-    def get_queryset(self):
-        queryset = Product.objects.all()
-        return queryset
+        # Set up pagination
+        paginator = PageNumberPagination()
+        paginator.page_size = 12
+        result_page = paginator.paginate_queryset(products, request)
 
-    def products(self, request, *args, **kwargs):
-        queryset = self.filter_queryset(self.get_queryset())
-        page = self.paginate_queryset(queryset)
-
-        if page is not None:
-            serializer = self.get_serializer(page, many=True)
-            return self.get_paginated_response(serializer.data)
-        
-        serializer = self.get_serializer(queryset, many=True)
+        # Serialize the result page
+        serializer = ProductSerializer(result_page, many=True)
         return Response(serializer.data)
-
-    # if request.method == "GET":
-    #     serializer = ProductSerializer(products, many=True)
-        
-    #     return Response(serializer.data)
 
 @api_view(['GET',])
 def api_categories(request):
