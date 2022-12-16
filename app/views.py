@@ -101,8 +101,9 @@ def getProductDetails(request, product_id):
 
 
 @api_view(['GET'])
-def getProductsByCategory(request):
+def getProductsByCategory(request, category_id):
     if request.method == "GET":
-        categories = Category.objects.all().prefetch_related('product_set')
-        serializer = CategorySerializer(categories, many=True)
+        category = get_object_or_404(Category, id=category_id)
+        products = Product.objects.filter(category=category)
+        serializer = ProductSerializer(products, many=True)
         return Response(serializer.data)
