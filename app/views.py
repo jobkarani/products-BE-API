@@ -5,6 +5,7 @@ from rest_framework.decorators import api_view
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render
 from django.db.models import Q
+from simple_mail.mail import send_mail
 
 from app.models import *
 from .serializer import *
@@ -12,7 +13,19 @@ from .pagination import *
 from rest_framework import generics
 from rest_framework.pagination import PageNumberPagination
 
+
 # Create your views here.
+
+def send_mail(request):
+    if request.method == 'POST':
+        form_data = request.POST
+        send_mail(
+        'Form submission',
+        f'You received a new submission with the following data:\n{form_data}',
+        'sender@example.com',
+        ['recipient@example.com'],
+        )
+    return form_data
 
 def productsPage(request, category_slug=None):
     categories = None

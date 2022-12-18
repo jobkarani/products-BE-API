@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'app.apps.AppConfig', 
     "rest_framework", 
-    'cloudinary',  
+    'cloudinary', 
+    'simple_mail', 
 ]
 
 MIDDLEWARE = [
@@ -98,6 +99,14 @@ DATABASES = {
         'PORT': '7758',
     }
 }
+
+EMAIL_BACKEND = 'simple_mail.backends.AsyncEmailBackend'
+EMAIL_HOST = 'https://ahericaredbb.up.railway.app'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'healthylivingkenya254@gmail.com'
+EMAIL_HOST_PASSWORD = '12345678jk'
+
 
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
