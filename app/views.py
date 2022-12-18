@@ -5,7 +5,7 @@ from rest_framework.decorators import api_view
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render
 from django.db.models import Q
-from simple_mail.mail import send_mail
+# from simple_mail.mail import send_mail
 
 from app.models import *
 from .serializer import *
