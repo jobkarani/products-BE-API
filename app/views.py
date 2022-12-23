@@ -120,3 +120,10 @@ def getProductsByCategory(request, category_id):
         products = Product.objects.filter(category=category)
         serializer = ProductSerializer(products, many=True)
         return Response(serializer.data)
+
+@api_view(['GET'])
+def get_blogs(request):
+    if request.method == "GET":
+        blogs = Blogs.objects.all()
+        serializer = BlogsSerializer(blogs, many=True)
+        return Response(serializer.data)
