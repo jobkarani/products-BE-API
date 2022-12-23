@@ -92,11 +92,11 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         # 'NAME': os.path.join(BASE_DIR, 'db.postgresql'),
-        'NAME':'railway',
+        'NAME':'ahericare',
         'USER':'postgres',
-        'PASSWORD':'AsgaSSqjvLIKAKciKmMi',
-        'HOST': 'containers-us-west-145.railway.app',
-        'PORT': '7758',
+        'PASSWORD':'gerrit',
+        # 'HOST': 'containers-us-west-145.railway.app',
+        # 'PORT': '7758',
     }
 }
 
