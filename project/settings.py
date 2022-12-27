@@ -94,9 +94,9 @@ DATABASES = {
         # 'NAME': os.path.join(BASE_DIR, 'db.postgresql'),
         'NAME':'railway',
         'USER':'postgres',
-        'PASSWORD':'Vz2kPspS4SZ4DA4eIG4w',
-        'HOST': 'containers-us-west-145.railway.app',
-        'PORT': '7758',
+        'PASSWORD':'YitLaFnWsoKIv01xi3e5',
+        'HOST': 'containers-us-west-25.railway.app',
+        'PORT': '5896',
     }
 }
 
