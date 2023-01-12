@@ -42,9 +42,9 @@ class Blogs(models.Model):
     image = ImageField( manual_crop="")
     heading = models.CharField(max_length=100, blank=False)
     created_at = models.DateTimeField(auto_now_add=True)
-    text = models.TextField(max_length=1000, blank=False)
-    tex2 = models.TextField(max_length=1000, blank=False)
-    text3 = models.TextField(max_length=1000, blank=False)
+    text = models.TextField(max_length=1000, blank=False, null=True)
+    tex2 = models.TextField(max_length=1000, blank=False, null=True)
+    text3 = models.TextField(max_length=1000, blank=False, null=True)
 
     def __str__(self):
         return self.heading
@@ -52,9 +52,9 @@ class Blogs(models.Model):
 class Service(models.Model):
     image = ImageField( manual_crop="")
     name = models.CharField(max_length=100, blank=False)
-    paragrapagh1 = models.TextField(max_length=1000, blank=False)
-    paragrapagh2 = models.TextField(max_length=1000, blank=False)
-    paragrapagh3 = models.TextField(max_length=1000, blank=False)
+    paragrapagh1 = models.TextField(max_length=1000, blank=False, null=True)
+    paragrapagh2 = models.TextField(max_length=1000, blank=False, null=True)
+    paragrapagh3 = models.TextField(max_length=1000, blank=False, null=True)
 
     def __str__(self):
         return self.name
