@@ -18,7 +18,7 @@ class CategorySerializer(serializers.ModelSerializer):
 class BlogsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Blogs
-        fields = ['id', 'image', 'heading', 'created_at', 'text','text2','text3']
+        fields = ['id', 'image', 'heading', 'created_at', 'text','tex2','text3']
 
 
 class ServiceSerializer(serializers.ModelSerializer):
