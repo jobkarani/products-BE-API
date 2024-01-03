@@ -12,8 +12,6 @@ from .serializer import *
 from .pagination import *
 from rest_framework import generics
 from rest_framework.pagination import PageNumberPagination
-
-
 # Create your views here.
 
 def send_mail(request):
