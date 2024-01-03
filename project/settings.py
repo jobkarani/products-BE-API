@@ -101,7 +101,7 @@ DATABASES = {
 }
 
 EMAIL_BACKEND = 'simple_mail.backends.AsyncEmailBackend'
-EMAIL_HOST = 'https://ahericaredbb.up.railway.app'
+EMAIL_HOST = 'https://products-be-api-production.up.railway.app'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'healthylivingkenya254@gmail.com'
@@ -112,9 +112,9 @@ db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
 
 
-ALLOWED_HOSTS=['ahericaredbb.up.railway.app','127.0.0.1', 'https://ahericaredbb.up.railway.app/admin','http://localhost:4200']
+ALLOWED_HOSTS=['products-be-api-production.up.railway.app','127.0.0.1', 'https://products-be-api-production.up.railway.app/admin','http://localhost:4200']
 
-CSRF_TRUSTED_ORIGINS = ['https://ahericaredbb.up.railway.app']
+CSRF_TRUSTED_ORIGINS = ['https://products-be-api-production.up.railway.app']
 
 UPLOADCARE = {  
     'pub_key': config('pub_key'),
